@@ -1,0 +1,45 @@
+ <div class="container">
+    <div class="input-group shadow-sm">
+      <div class="input-group-prepend">
+        <button class="btn btn-outline-secondary dropdown-toggle text-capitalize" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span *ngIf=" catSelect == ''; else selectedCategory">Categorías</span></button>
+        <ng-template #selectedCategory>
+          {{catSelectName}}
+        </ng-template>
+        <div class="dropdown">
+          <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
+            <a  class="dropdown-item text-capitalize" href="#" (click)="setCategory(category.value, category.name)"  *ngFor="let category of categories">{{category.name}}</a>
+          </div>
+        </div>
+      </div>
+        <input class="form-control shadow" [(ngModel)]="searchQuery" name="search" placeholder="¿Que quieres ver?" (keyup.enter)= "searchImages(searchQuery)" autocomplete="off" required>
+    </div>
+    <div class="text-center mt-3">
+      <div class="col-12">
+        <button class="btn btn-outline-danger btn-sm" (click)="searchImages(searchQuery)" type="button">Buscar</button>
+        <div *ngIf="searching">
+          <div class="spinner-border mt-5" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-3">
+    <div class="card-columns">
+      <a href="{{image.largeImageURL}}"  target="_blank" class="card bg-dark text-white shadow" *ngFor="let image of images" title="Por {{image.user}}">
+        <img loading="lazy" src="{{ image.webformatURL }}" class="card-img" alt="{{image.tags}}">
+        <div class="card-img-overlay">
+          <div class="row description-headband">
+            <div class="col-6 text-warning">📌 {{image.tags}}</div>
+            <div class="col-3">👁 {{image.views}}</div>
+            <div class="col-3">❤ {{image.likes}}</div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+
+
+

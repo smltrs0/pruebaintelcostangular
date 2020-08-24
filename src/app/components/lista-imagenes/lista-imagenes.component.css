@@ -1,0 +1,23 @@
+.form-control{
+  text-align:center;
+}
+
+.description-headband{
+  position: absolute;
+  bottom: 15px;
+  border-radius: inherit;
+  background: rgba(0, 0, 0, 0.61);
+  align-items: center;
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
+}
+
+.card-columns {
+    column-count: 1;
+  }
+
+@media only screen and (min-width: 769px) {
+  .card-columns {
+    column-count: 2;
+  }
+}
